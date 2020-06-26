@@ -19,8 +19,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     let fiterImage=''
     filterImageFromURL(image_url).then((result)=>{
       fiterImage=result
-      res.sendFile(fiterImage)
-      deleteLocalFiles([fiterImage])
+      res.sendFile(fiterImage,function(){
+        deleteLocalFiles([fiterImage])
+      })
+     
     })
   }
   else{
